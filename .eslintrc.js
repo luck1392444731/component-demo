@@ -16,6 +16,7 @@ module.exports = {
     /* 根据规范选择想要的规则，可官网查询相应规则https://eslint.org/docs/rules/*/
     'vue/script-indent': [2, 'tab', { baseIndent: 1 }],
     'vue/html-indent': [2, 'tab', { baseIndent: 1 }],
+    'vue/multi-word-component-names': 'off',
     'no-undef': 2, // 不可以有未声明的变量
     'no-redeclare': 2, // 禁止重复声明变量
     semi: [0], // 语句强制分号结尾
