@@ -14,8 +14,6 @@ module.exports = {
   },
   rules: {
     /* 根据规范选择想要的规则，可官网查询相应规则https://eslint.org/docs/rules/*/
-    'vue/script-indent': [2, 'tab', { baseIndent: 1 }],
-    'vue/html-indent': [2, 'tab', { baseIndent: 1 }],
     'vue/multi-word-component-names': 'off',
     'no-undef': 2, // 不可以有未声明的变量
     'no-redeclare': 2, // 禁止重复声明变量
@@ -30,7 +28,8 @@ module.exports = {
     'eol-last': 2, // 文件以单一的换行符结束
     eqeqeq: [2, 'allow-null'], // 必须使用全等
     'generator-star-spacing': [2, { before: true, after: true }], // generate函数的前后空格
-    indent: [2, 2, { SwitchCase: 1 }], // 缩进风格，switch缩进风格
+    'no-tabs': 'off',
+    indent: 'off', // 缩进风格，switch缩进风格
     'jsx-quotes': [2, 'prefer-single'], // jsx使用单引号
     'key-spacing': [2, { beforeColon: false, afterColon: true }], // 对象字面量中冒号添加后空格
     'keyword-spacing': [2, { before: true, after: true }], // 关键字前后空格
@@ -49,7 +48,6 @@ module.exports = {
     'no-multiple-empty-lines': [2, { max: 1 }], // 空行最多不能超过2行
     'no-regex-spaces': 2, // 禁止在正则表达式字面量中使用多个空格
     'no-trailing-spaces': 2, // 一行结束后面不要有空格
-    'no-tabs': 'off',
     'no-whitespace-before-property': 2, // 对象键之前无空格
     'operator-linebreak': [
       2,
