@@ -33,7 +33,8 @@
           v-model="loginForm.password"
 				/>
 				<span class="show-pwd">
-			<svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+			<svg-icon
+			:icon="passwordType === 'password' ? 'eye' : 'eye-open'"
 			@click="onChangePwdType"
            />
 				</span>
@@ -41,8 +42,10 @@
 
 			<el-button
 				type="primary"
-				style="width: 100%;
-        margin-bottom: 30px">登录</el-button>
+				style="width: 100%;margin-bottom: 30px"
+				:loading="loading"
+				@click="handleLogin"
+				>登录</el-button>
 		</el-form>
 	</div>
 </template>
@@ -50,6 +53,8 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+import { useStore } from 'vuex'
+console.log(useStore, 'useStore')
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
@@ -77,6 +82,26 @@ const onChangePwdType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+const loading = ref(false)
+const store = useStore()
+const loginFromRef = ref(null)
+const handleLogin = () => {
+	console.log(loginFromRef, 'loginFromRef')
+	// 校验
+	loginFromRef.value.validate(valid => {
+		console.log(store, 'store===')
+		if (!valid) return
+		loading.value = true
+		store.dispatch('user/login', loginForm.value)
+		.then(() => {
+			loading.value = false
+		})
+		.catch((err) => {
+			console.log(err)
+			loading.value = false
+		})
+	})
 }
 
 </script>
